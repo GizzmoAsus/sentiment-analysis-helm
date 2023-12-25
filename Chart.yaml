@@ -1,0 +1,13 @@
+apiVersion: v2
+name: sentiments
+description: A Helm chart for Kubernetes
+keywords:
+- python
+- sentiments
+- microservice
+maintainers:
+- name: Matt Kellett
+  email: email@kelcode.co.uk
+type: application
+version: 1.0.1
+appVersion: "1.0.1"

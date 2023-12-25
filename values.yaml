@@ -1,0 +1,55 @@
+# Number of replicas
+replicaCount: 1
+
+# Image configuration
+image:
+  # Docker image repository (e.g., username/repository-name)
+  repository: ghcr.io/gizzmoasus/sentiment-analysis-service
+  # Optionally override the image tag (defaults to Chart's appVersion)
+  tag: "1.0.1"
+  # Image pull policy (e.g., IfNotPresent, Always)
+  pullPolicy: IfNotPresent
+
+# Image pull secrets for private Docker registries
+imagePullSecrets: ""
+
+# Override the name of the chart (empty by default)
+nameOverride: ""
+
+# Override the fullname of the chart (empty by default)
+fullnameOverride: ""
+
+# Security context for the Pod
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+# Service configuration
+service:
+  type: ClusterIP
+  port: 8080
+
+# Ingress configuration
+ingress:
+  # Enable or disable ingress
+  enabled: true
+  # Ingress class (e.g., nginx, traefik)
+  className: "<ingress-class-name>"
+  # Annotations for additional ingress configurations
+  annotations:
+    <annotation-key>: <annotation-value>
+  # Hosts and paths for ingress
+  hosts:
+    - host: example.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  # TLS configuration
+  tls:
+    - secretName: example-tls-secret
+      hosts:
+        - example.com
